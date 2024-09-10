@@ -28,3 +28,33 @@ void moveParty(){
     }
     moveForward();
 }
+
+//An other solution. What is about that code?
+
+void partyAgain () { //Hauptbefehl
+    
+    while (onBeeper()) { //Mit einem repeat-Befehl ist es nicht allgemein.
+        turnLeft();
+        pickBeeper();
+        moveParty(); //Ein Beeper wird positioniert
+        turnLeft();
+        if (frontIsClear()) {
+            moveForward();
+        }
+    }
+}
+
+void moveParty () {//Für eine if-Schleife
+    if (frontIsClear()){
+        moveForward();
+        moveParty(); //Speichert die gegangenen Schritte.
+    }
+    if (frontIsClear()) {
+        moveForward();
+    }
+    else {
+        //Hier wird der Beeper positioniert. Das kommt hier, damit er sich nicht mehr bewegt.
+        turnAround();
+        dropBeeper();
+    }
+}
