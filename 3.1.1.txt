@@ -28,3 +28,32 @@ void moveParty(){
     }
     moveForward();
 }
+
+//What is about this code?
+
+void partyAgain () {
+    
+    while (onBeeper()) {
+        turnLeft();
+        pickBeeper();
+        moveParty();
+        turnLeft();
+        if (frontIsClear()) {
+            moveForward();
+        }
+    }
+}
+
+void moveParty () {
+    if (frontIsClear()){
+        moveForward();
+        moveParty();
+    }
+    if (frontIsClear()) {
+        moveForward();
+    }
+    else {
+        turnAround();
+        dropBeeper();
+    }
+}
